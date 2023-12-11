@@ -17,7 +17,7 @@ non_empty_props = [:title, :link, :description, :encolsure, :pubDate, :itunes_su
 URI.open(url) do |rss|
   feed = RSS::Parser.parse rss
   props = find_non_empty_props(feed.items[0])
-  feed.items.each_index do |item, i|
+  feed.items.each_with_index do |item, i|
     puts "Item: #{i}"
     props.each do |name|
       puts "#{name} : #{item.instance_variable_get name}"
