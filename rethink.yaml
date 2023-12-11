@@ -17,7 +17,9 @@ spec:
         image: docker.io/rethinkdb:2.4.2
         ports:
         - containerPort: 28015
+          name: client
         - containerPort: 29015
+          name: intracluster
         - containerPort: 8080
           name: web
 
@@ -32,6 +34,10 @@ spec:
   ports:
   - name: web
     port: 8080
+  - name: client
+    port: 28015
+  - name: cluster
+    port: 29015
 
 ---
 apiVersion: networking.k8s.io/v1
